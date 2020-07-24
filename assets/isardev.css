@@ -1,0 +1,17 @@
+.csharp {
+    color: white;
+    background: darkgreen;
+    opacity: 0.3;
+}
+
+.java {
+    color: white;
+    background: darkred;
+    opacity: 0.3;
+}
+
+.sonstiges {
+    color: white;
+    background: grey;
+    opacity: 0.3;
+}
