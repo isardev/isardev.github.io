@@ -2,6 +2,8 @@ BEGIN:VCARD
 VERSION:2.1
 N;LANGUAGE=de:Haller;Paul
 FN:Paul Haller
-TEL;CELL;VOICE:+49 1577 1750089
+TITLE:Freiberuflicher Softwareentwickler
+TEL;CELL;VOICE:+49 157 71750089
 EMAIL;PREF;INTERNET:paul.haller@isardev.de
+URL;WORK:http://www.isardev.de/
 END:VCARD
