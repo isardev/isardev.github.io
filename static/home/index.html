@@ -6,10 +6,11 @@
 		<title>Intranet</title>
 		<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="css/site.css"/>
-		
+
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		<script src="lib/vue/vue.global.prod.js"></script>
 	</head>
-	<body>
+	<body id="app">
 		<header>
 			<nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
 				<div class="container">
@@ -25,69 +26,127 @@
 						</ul>
 						<ul class="navbar-nav flex-grow-1">
 							<li class="nav-item">
-								<a class="nav-link text-light" href="#">Home</a>
+								<a class="nav-link text-light" href="#">{{ title }}</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</nav>
 		</header>
+
 		<div class="container">
 			<main role="main" class="pb-3">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Start</h2>
+				<template v-for="category in categories">
+					<div class="row">
+						<div class="col-md-12">
+							<h2>{{ category.name }}</h2>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<a class="btn btn-lg btn-danger" role="button" href="https://www.google.de/">Google</a>
-						<a class="btn btn-lg btn-danger" role="button" href="https://www.xing.com/">Xing</a>
-						<a class="btn btn-lg btn-danger" role="button" href="https://www.instagram.com/">Instagram</a>
-						<a class="btn btn-lg btn-danger" role="button" href="https://app.spiketime.de/">Spike Time</a>
+					<div class="row">
+						<div class="col-md-12">
+							<a v-for="link in category.links" class="btn btn-lg" :class="category.cssClass"
+							   style="margin-right: 5px"
+							   role="button" :href="link.url">{{ link.label }}</a>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Cloud Mail</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<a class="btn btn-lg btn-info" role="button" href="https://outlook.live.com/mail/0/inbox">Outlook Privat</a>
-						<a class="btn btn-lg btn-info" role="button" href="https://owa.cloud4partner.com/owa/#path=/mail">Outlook Isardev</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Cloud Infrastruktur</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<a class="btn btn-lg btn-dark" role="button" href="https://eu-central-1.console.aws.amazon.com/console/home?region=eu-central-1">AWS Console</a>
-						<a class="btn btn-lg btn-dark" role="button" href="https://www.isardev.de/">Isardev Website</a>
-						<a class="btn btn-lg btn-dark" role="button" href="https://onedrive.live.com/">OneDrive Privat</a>
-						<a class="btn btn-lg btn-dark" role="button" href="https://isardevde-my.sharepoint.com/personal/paul_haller_isardev_de/_layouts/15/onedrive.aspx">OneDrive Isardev</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Lokale Hardware</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<a class="btn btn-lg btn-success" role="button" href="http://del001599caa1de/sws/index.html">Drucker</a>
-						<a class="btn btn-lg btn-success" role="button" href="http://fritz.box/">Fritz.Box</a>
-						<a class="btn btn-lg btn-success" role="button" href="http://myfritz.box/myfritz/index.lua">My Fritz</a>
-					</div>
-				</div>
+				</template>
 			</main>
 		</div>
+
 		<footer class="border-top footer text-muted">
 			<div class="container">&copy; 2022 - Isardev Intranet</div>
 		</footer>
+
+		<script>
+			const { createApp } = Vue
+
+			createApp({
+				data() {
+					return {
+						title: 'Home',
+						categories: [
+							{
+								name: 'Start',
+								cssClass: 'btn-danger',
+								links: [
+									{
+										label: "Google",
+										url: "https://www.google.de/"
+									},
+									{
+										label: "Xing",
+										url: "https://www.xing.com/"
+									},
+									{
+										label: "Instagram",
+										url: "https://www.instagram.com/"
+									},
+									{
+										label: "Spike Time",
+										url: "https://app.spiketime.de/"
+									}
+								]
+							},
+							{
+								name: 'Cloud Mail',
+								cssClass: "btn-info",
+								links: [
+									{
+										label: "Outlook Privat",
+										url: "https://outlook.live.com/mail/0/inbox"
+									},
+									{
+										label: "Outlook Isardev",
+										url: "https://outlook.office.com/mail/"
+									}
+								]
+							},
+							{
+								name: 'Cloud Infrastruktur',
+								cssClass: "btn-dark",
+								links: [
+									{
+										label: "AWS Console",
+										url: "https://eu-central-1.console.aws.amazon.com/console/home?region=eu-central-1"
+									},
+									{
+										label: "Isardev Website",
+										url: "https://www.isardev.de/"
+									},
+									{
+										label: "OneDrive Privat",
+										url: "https://onedrive.live.com/"
+									},
+									{
+										label: "OneDrive Isardev",
+										url: "https://isardevde-my.sharepoint.com/personal/paul_haller_isardev_de/_layouts/15/onedrive.aspx"
+									}
+								]
+							},
+							{
+								name: 'Lokale Hardware',
+								cssClass: "btn-success",
+								links: [
+									{
+										label: "Drucker",
+										url: "http://del001599caa1de/sws/index.html"
+									},
+									{
+										label: "Fritz.Box",
+										url: "http://fritz.box/"
+									},
+									{
+										label: "My Fritz",
+										url: "http://myfritz.box/myfritz/index.lua"
+									}
+								]
+							}
+						]
+					}
+				}
+			}).mount('#app')
+		</script>
+
 		<script src="lib/jquery/dist/jquery.min.js"/>
 		<script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"/>
 	</body>
