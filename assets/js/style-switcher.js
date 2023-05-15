@@ -7,10 +7,10 @@ $('.style-switcher__control').on('click', function () {
 
 //Change monochrome.css to color.css
 $('.style-switcher__link--color').click(function (){
-    $('link[href="assets/css/monochrome.css"]').attr('href','assets/css/color.css');
+    $('link[href="css/monochrome.css"]').attr('href','css/color.css');
 });
 
 //Change color.css to monochrome.css
 $('.style-switcher__link--mono').click(function (){
-    $('link[href="assets/css/color.css"]').attr('href','assets/css/monochrome.css');
+    $('link[href="css/color.css"]').attr('href','css/monochrome.css');
 });
