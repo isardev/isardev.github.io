@@ -15,3 +15,155 @@
     background: grey;
     opacity: 0.3;
 }
+
+/* Accordion Styles for Portfolio */
+.project-card {
+    margin-bottom: 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.project-card__header {
+    background: transparent;
+}
+
+.project-card__toggle {
+    cursor: pointer;
+    padding: 15px;
+    margin: 0;
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+
+.project-card__toggle:hover {
+    background-color: rgba(0,0,0,0.03);
+}
+
+.project-card__toggle .project-card__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.project-card__toggle .project-card__info {
+    position: relative;
+    padding-right: 30px;
+}
+
+.project-card__toggle .project-card__title {
+    margin-bottom: 5px;
+}
+
+.project-card__toggle .project-card__meta {
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.project-card__toggle .project-card__description {
+    margin-bottom: 0;
+    font-size: 0.95em;
+    color: #444;
+    line-height: 1.4;
+}
+
+.project-card__expand-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+}
+
+.project-card__expand-icon::before,
+.project-card__expand-icon::after {
+    content: '';
+    position: absolute;
+    background-color: #333;
+    transition: transform 0.3s ease;
+}
+
+.project-card__expand-icon::before {
+    width: 2px;
+    height: 14px;
+    left: 9px;
+    top: 3px;
+}
+
+.project-card__expand-icon::after {
+    width: 14px;
+    height: 2px;
+    left: 3px;
+    top: 9px;
+}
+
+.project-card__toggle[aria-expanded="true"] .project-card__expand-icon::before {
+    transform: rotate(90deg);
+}
+
+.project-card__collapse {
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.project-card__body {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.project-card__detail {
+    margin-bottom: 15px;
+}
+
+.project-card__detail strong {
+    display: inline-block;
+    min-width: 120px;
+}
+
+.project-card__jobs {
+    list-style: square inside;
+    margin-left: 120px;
+    margin-bottom: 15px;
+}
+
+.project-card__stack {
+    margin-top: 20px;
+}
+
+.project-card__stack-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.project-card__link {
+    margin-top: 15px;
+}
+
+.project-card__link a {
+    color: #007bff;
+}
+
+.project-card__link a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .project-card__toggle .project-card__img {
+        margin-bottom: 10px;
+    }
+
+    .project-card__jobs {
+        margin-left: 0;
+    }
+
+    .project-card__detail strong {
+        display: block;
+        min-width: auto;
+        margin-bottom: 5px;
+    }
+}
